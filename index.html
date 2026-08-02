@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Asad — Full-Stack &amp; AI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050507;
+  --panel:#0D0D14;
+  --violet:#8B5CF6;
+  --violet-deep:#6D28D9;
+  --cyan:#22D3EE;
+  --text:#EDEDF5;
+  --muted:#9494A8;
+  --line:rgba(237,237,245,0.08);
+  --font-d:'Space Grotesk',sans-serif;
+  --font-b:'Inter',sans-serif;
+  --font-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--violet);color:#fff;}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+  padding:20px 6vw;backdrop-filter:blur(10px);background:rgba(5,5,7,0.55);border-bottom:1px solid var(--line);}
+.logo{font-family:var(--font-d);font-weight:700;font-size:19px;display:flex;align-items:center;gap:10px;}
+.logo .mark{width:34px;height:34px;border-radius:50%;background:conic-gradient(from 180deg,var(--violet),var(--cyan),var(--violet));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#050507;}
+nav ul{list-style:none;display:flex;gap:36px;font-family:var(--font-m);font-size:13px;letter-spacing:.04em;}
+nav ul a{color:var(--muted);transition:color .2s;}
+nav ul a:hover{color:var(--cyan);}
+.hire-btn{font-family:var(--font-m);font-size:12px;border:1px solid var(--violet);color:var(--violet);padding:10px 22px;border-radius:30px;transition:.25s;}
+.hire-btn:hover{background:var(--violet);color:#fff;}
+@media(max-width:860px){nav ul{display:none;}}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+#stars-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.hero-inner{position:relative;z-index:2;padding:0 6vw;display:flex;align-items:center;width:100%;}
+.hero-text{max-width:640px;}
+.badge{font-family:var(--font-m);font-size:12px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center;margin-bottom:22px;}
+.badge .dot{width:6px;height:6px;background:#34D399;border-radius:50%;box-shadow:0 0 8px #34D399;animation:blink 2s infinite;}
+@keyframes blink{50%{opacity:.35;}}
+.hero-text .hi{font-family:var(--font-m);color:var(--muted);font-size:1rem;margin-bottom:6px;}
+.hero-text h1{font-family:var(--font-d);font-weight:700;font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:1.03;letter-spacing:-.01em;}
+.hero-text h1 .grad{background:linear-gradient(100deg,var(--violet),var(--cyan) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-text .role{font-family:var(--font-m);font-size:clamp(1rem,1.8vw,1.3rem);color:var(--text);margin:20px 0 0;letter-spacing:.02em;}
+.hero-text .role em{font-style:normal;color:var(--violet);}
+.hero-text p{font-family:var(--font-m);color:var(--muted);font-size:.92rem;line-height:1.8;margin:24px 0 36px;max-width:500px;}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{font-family:var(--font-m);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:15px 30px;border-radius:30px;display:inline-flex;align-items:center;gap:10px;transition:.25s;}
+.btn-fill{background:var(--violet);color:#fff;}
+.btn-fill:hover{background:var(--violet-deep);transform:translateY(-2px);}
+.btn-line{border:1px solid var(--line);color:var(--text);}
+.btn-line:hover{border-color:var(--cyan);color:var(--cyan);}
+.scroll-ind{position:absolute;bottom:40px;left:6vw;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.scroll-ind .wheel{width:26px;height:42px;border:1.5px solid var(--muted);border-radius:14px;display:flex;justify-content:center;padding-top:8px;}
+.scroll-ind .wheel span{width:3px;height:8px;border-radius:2px;background:var(--cyan);animation:wheel 1.6s infinite;}
+@keyframes wheel{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(10px);}}
+
+
+
+/* ===== SECTION SHELL ===== */
+section{position:relative;z-index:2;padding:150px 6vw;}
+.tag{font-family:var(--font-m);font-size:12px;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;}
+.stitle{font-family:var(--font-d);font-weight:600;font-size:clamp(1.8rem,4vw,2.8rem);max-width:680px;letter-spacing:-.01em;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ===== ABOUT / CARDS ===== */
+.about{border-top:1px solid var(--line);}
+.about-copy{max-width:720px;color:var(--muted);line-height:1.9;font-size:1.02rem;margin:26px 0 64px;}
+.about-copy b{color:var(--text);font-weight:500;}
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px 26px;transition:transform .35s, border-color .35s;perspective:800px;}
+.card:hover{transform:translateY(-8px);border-color:rgba(139,92,246,.4);}
+.card .icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(145deg,var(--violet),var(--violet-deep));display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px;}
+.card h3{font-family:var(--font-d);font-size:1.08rem;margin-bottom:10px;font-weight:600;}
+.card p{color:var(--muted);font-size:.88rem;line-height:1.65;}
+@media(max-width:980px){.card-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.card-grid{grid-template-columns:1fr;}}
+
+/* ===== TECH ORBIT ===== */
+.tech{border-top:1px solid var(--line);text-align:center;}
+.tech .tag,.tech .stitle{text-align:left;}
+.orbit-wrap{position:relative;height:420px;display:flex;align-items:center;justify-content:center;margin-top:70px;}
+.orbit-ring{position:absolute;border:1px dashed var(--line);border-radius:50%;}
+.orbit-ring.r1{width:220px;height:220px;animation:spin 22s linear infinite;}
+.orbit-ring.r2{width:340px;height:340px;animation:spin 34s linear infinite reverse;}
+.orbit-ring.r3{width:420px;height:420px;animation:spin 48s linear infinite;}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+.orbit-core{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a78bfa,#6D28D9 70%);box-shadow:0 0 60px rgba(139,92,246,.5);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:700;color:#fff;font-size:13px;z-index:2;}
+.tech-ball{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:10px;color:var(--text);text-align:center;line-height:1.2;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+@media(max-width:760px){.orbit-wrap{height:320px;transform:scale(.72);}}
+
+/* ===== WORKS ===== */
+.works{border-top:1px solid var(--line);}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:60px;}
+.wcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px;position:relative;overflow:hidden;transition:transform .4s;}
+.wcard:hover{transform:translateY(-6px);}
+.wcard::before{content:'';position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);pointer-events:none;}
+.wcard .wnum{font-family:var(--font-m);color:var(--cyan);font-size:12px;letter-spacing:.1em;}
+.wcard h3{font-family:var(--font-d);font-size:1.5rem;margin:14px 0 12px;font-weight:600;}
+.wcard p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:20px;}
+.wcard .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.wcard .tags span{font-family:var(--font-m);font-size:10.5px;color:var(--violet);border:1px solid rgba(139,92,246,.35);padding:5px 10px;border-radius:20px;}
+.wcard .links{display:flex;gap:20px;font-family:var(--font-m);font-size:12px;}
+.wcard .links a{color:var(--text);border-bottom:1px solid var(--line);padding-bottom:2px;transition:.2s;}
+.wcard .links a:hover{color:var(--cyan);border-color:var(--cyan);}
+@media(max-width:860px){.work-grid{grid-template-columns:1fr;}}
+
+/* ===== EXPERIENCE ===== */
+.exp{border-top:1px solid var(--line);}
+.tl{position:relative;padding-left:36px;margin-top:60px;}
+.tl::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line);}
+.tl-item{position:relative;padding-bottom:58px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-41px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--violet);box-shadow:0 0 0 5px rgba(139,92,246,.16);}
+.tl-item .when{font-family:var(--font-m);font-size:11px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.tl-item h3{font-family:var(--font-d);font-size:1.3rem;font-weight:600;}
+.tl-item .org{font-family:var(--font-m);color:var(--muted);font-size:.85rem;margin:4px 0 16px;}
+.tl-item ul{color:var(--muted);line-height:1.85;font-size:.94rem;padding-left:18px;}
+
+/* ===== CONTACT ===== */
+.contact{border-top:1px solid var(--line);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px;}
+.form input,.form textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;color:var(--text);font-family:var(--font-b);font-size:.95rem;margin-bottom:18px;transition:border-color .2s;}
+.form input:focus,.form textarea:focus{border-color:var(--violet);outline:none;}
+.form label{font-family:var(--font-m);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;}
+.form textarea{resize:vertical;min-height:120px;}
+#earth-canvas{width:100%;height:380px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}#earth-canvas{height:280px;}}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--line);padding:40px 6vw;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:11px;color:var(--muted);}
+.footer-social{display:flex;gap:18px;}
+.footer-social a{border:1px solid var(--line);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:14px;}
+.footer-social a:hover{border-color:var(--cyan);color:var(--cyan);}
+@media(max-width:600px){footer{flex-direction:column;gap:16px;}}
+
+@media (prefers-reduced-motion:reduce){
+  .orbit-ring{animation:none;}
+  .scroll-ind .wheel span{animation:none;}
+  .reveal{transition:none;opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="mark">A</span>Asad</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#tech">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:masadbaloch9372@gmail.com" class="hire-btn">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="stars-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="badge"><span class="dot"></span> PUNJAB, PAKISTAN</div>
+      <div class="hi">Hi, I'm</div>
+      <h1>Muhammad <span class="grad">Asad</span></h1>
+      <div class="role">Full-Stack Developer <em>·</em> AI Systems Engineer</div>
+      <p>I design and build complete, production-grade platforms — Laravel &amp; FastAPI backends fused with AI/ML pipelines, real-time systems, and clean mobile experiences.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-fill">See My Work</a>
+        <a href="#contact" class="btn btn-line">Let's Talk</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind"><span style="font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.1em;">SCROLL</span><div class="wheel"><span></span></div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="reveal">
+    <div class="tag">Overview</div>
+    <h2 class="stitle">A full-stack engineer who ships complete systems — not just working demos.</h2>
+    <p class="about-copy">Final-year <b>Computer Science student at KFUEIT</b>, building AI-integrated web and mobile platforms independently. I specialize in <b>Laravel and FastAPI backends</b> combined with AI/ML pipelines — API-first architectures with multi-provider AI fallback, role-based access control, and real-time messaging, always aimed at production-grade reliability.</p>
+  </div>
+  <div class="card-grid reveal">
+    <div class="card">
+      <div class="icon">⚙️</div>
+      <h3>Full-Stack Developer</h3>
+      <p>End-to-end system design across Laravel, FastAPI, and MySQL/PostgreSQL — from database schema to deployed API.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>AI/ML Integration</h3>
+      <p>Multi-model fallback pipelines (Groq → Gemini → Perplexity), AI matching engines, and generative layout systems.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>Mobile Development</h3>
+      <p>Cross-platform Flutter apps connected to real-time backends — built for RiseAid's disaster-response coordination.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏗️</div>
+      <h3>System Architect</h3>
+      <p>RBAC systems, REST API design, and scalable architecture — owning projects from concept to deployment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECH ORBIT -->
+<section class="tech" id="tech">
+  <div class="reveal">
+    <div class="tag">Toolkit</div>
+    <h2 class="stitle">Technologies I orbit around daily.</h2>
+  </div>
+  <div class="orbit-wrap reveal">
+    <div class="orbit-ring r1"></div>
+    <div class="orbit-ring r2"></div>
+    <div class="orbit-ring r3"></div>
+    <div class="orbit-core">ASAD<br>DEV</div>
+    <div class="tech-ball" style="top:2%;left:50%;transform:translate(-50%,0);">Laravel</div>
+    <div class="tech-ball" style="top:50%;right:-2%;transform:translate(0,-50%);">FastAPI</div>
+    <div class="tech-ball" style="bottom:2%;left:50%;transform:translate(-50%,0);">Flutter</div>
+    <div class="tech-ball" style="top:50%;left:-2%;transform:translate(0,-50%);">Python</div>
+    <div class="tech-ball" style="top:14%;left:14%;">PHP</div>
+    <div class="tech-ball" style="top:14%;right:14%;">Three.js</div>
+    <div class="tech-ball" style="bottom:14%;left:14%;">MySQL</div>
+    <div class="tech-ball" style="bottom:14%;right:14%;">AI/ML</div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="work">
+  <div class="reveal">
+    <div class="tag">Featured Work</div>
+    <h2 class="stitle">Platforms built end-to-end — design to deployment.</h2>
+  </div>
+  <div class="work-grid reveal">
+    <div class="wcard">
+      <div class="wnum">01 / AI AUTOMATION</div>
+      <h3>JobSky</h3>
+      <p>AI-powered job application automation platform aggregating 17+ job APIs and 100+ Greenhouse/Lever company boards, with AI CV-matching and a multi-model chatbot fallback chain.</p>
+      <div class="tags"><span>Laravel 11</span><span>FastAPI</span><span>AI Matching</span></div>
+      <div class="links"><a href="https://github.com/asad9333/jobsky-laravel" target="_blank" rel="noopener">Source Code →</a></div>
+    </div>
+    <div class="wcard">
+      <div class="wnum">02 / DISASTER RESPONSE</div>
+      <h3>RiseAid</h3>
+      <p>Full-stack disaster response coordination system — Laravel + FastAPI + Flutter, with variadic RBAC, real-time messaging, and automated flood-zone detection for Pakistani cities.</p>
+      <div class="tags"><span>Flutter</span><span>RBAC</span><span>Real-Time</span></div>
+      <div class="links"><a href="#">Private Repo</a></div>
+    </div>
+    <div class="wcard">
+      <div class="wnum">03 / GENERATIVE DESIGN</div>
+      <h3>Archora</h3>
+      <p>AI platform generating interactive 3D home &amp; building designs. Budget-constrained layout generation, Three.js visualization engine, and Pakistan-specific BOQ estimation.</p>
+      <div class="tags"><span>Three.js</span><span>3D Rendering</span><span>BOQ Engine</span></div>
+      <div class="links"><a href="#">In Development</a></div>
+    </div>
+    <div class="wcard">
+      <div class="wnum">04 / WEB DEVELOPMENT</div>
+      <h3>E-Commerce Platform</h3>
+      <p>Laravel e-commerce app with product listings, streamlined Buy Now checkout, automated order receipts, and an admin panel with real-time notifications.</p>
+      <div class="tags"><span>Laravel</span><span>MySQL</span><span>Admin Panel</span></div>
+      <div class="links"><a href="#">Private Repo</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp" id="experience">
+  <div class="reveal">
+    <div class="tag">Experience</div>
+    <h2 class="stitle">Where the work has happened.</h2>
+  </div>
+  <div class="tl reveal">
+    <div class="tl-item">
+      <div class="when">Sep 2025 — Present · Remote, Pakistan</div>
+      <h3>Freelance Full-Stack Developer</h3>
+      <div class="org">Self-Employed</div>
+      <ul>
+        <li>Building full-stack web &amp; mobile applications independently, focused on AI-integrated systems.</li>
+        <li>Delivered AI-powered job automation and disaster-response coordination platforms end-to-end.</li>
+        <li>Expanding into GoHighLevel CRM — funnels, pipelines, and workflow automation for clients.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="when">Feb 2026 — Jul 2026 · Remote, Pakistan</div>
+      <h3>Web Development Project</h3>
+      <div class="org">Self / Academic Project</div>
+      <ul>
+        <li>Built a full-featured Laravel e-commerce app with Buy Now checkout and order automation.</li>
+        <li>Developed an admin panel with real-time order notifications.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <div class="tag">Get In Touch</div>
+    <h2 class="stitle">Have a project in mind? Let's build it.</h2>
+  </div>
+  <div class="contact-grid reveal">
+    <form class="form" onsubmit="event.preventDefault(); window.location.href='mailto:masadbaloch9372@gmail.com?subject=Portfolio Contact from '+encodeURIComponent(this.name.value)+'&body='+encodeURIComponent(this.message.value+'\n\nFrom: '+this.email.value);">
+      <label for="name">Your Name</label>
+      <input id="name" name="name" type="text" required placeholder="John Doe">
+      <label for="email">Your Email</label>
+      <input id="email" name="email" type="email" required placeholder="john@example.com">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required placeholder="Let's build something..."></textarea>
+      <button type="submit" class="btn btn-fill" style="border:none;cursor:pointer;">Send Message</button>
+    </form>
+    <canvas id="earth-canvas"></canvas>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 MUHAMMAD ASAD — FULL-STACK &amp; AI DEVELOPER</span>
+  <div class="footer-social">
+    <a href="https://github.com/asad9333" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+    <a href="https://www.linkedin.com/in/muhammad-asad-15a958388/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+    <a href="mailto:masadbaloch9372@gmail.com" aria-label="Email">@</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ================= STARFIELD ================= */
+(function(){
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let w,h,stars=[];
+  function resize(){
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  }
+  function init(){
+    resize();
+    stars = Array.from({length:180},()=>({
+      x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.3+0.2,
+      a:Math.random(), s:Math.random()*0.015+0.003
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    stars.forEach(st=>{
+      st.a += st.s;
+      const op = Math.abs(Math.sin(st.a));
+      ctx.beginPath();
+      ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,190,255,${op})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', init);
+  init(); draw();
+})();
+
+/* ================= 3D EARTH (contact) ================= */
+(function(){
+  const canvas = document.getElementById('earth-canvas');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, canvas.offsetWidth/canvas.offsetHeight, 0.1, 100);
+  camera.position.set(0,0,5.4);
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  function fit(){renderer.setSize(canvas.offsetWidth, canvas.offsetHeight); camera.aspect=canvas.offsetWidth/canvas.offsetHeight; camera.updateProjectionMatrix();}
+  fit();
+
+  const globeGroup = new THREE.Group();
+  scene.add(globeGroup);
+
+  const wireGeo = new THREE.SphereGeometry(1.7, 24, 18);
+  const wireMat = new THREE.MeshBasicMaterial({color:0x6D28D9, wireframe:true, transparent:true, opacity:0.35});
+  const wire = new THREE.Mesh(wireGeo, wireMat);
+  globeGroup.add(wire);
+
+  // scattered "city" points
+  const pCount = 260;
+  const positions = new Float32Array(pCount*3);
+  for(let i=0;i<pCount;i++){
+    const phi = Math.acos(-1 + (2*i)/pCount);
+    const theta = Math.sqrt(pCount*Math.PI)*phi;
+    const r = 1.72;
+    positions[i*3] = r*Math.cos(theta)*Math.sin(phi);
+    positions[i*3+1] = r*Math.sin(theta)*Math.sin(phi);
+    positions[i*3+2] = r*Math.cos(phi);
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  const pMat = new THREE.PointsMaterial({color:0x22D3EE, size:0.035, transparent:true, opacity:0.85});
+  const points = new THREE.Points(pGeo, pMat);
+  globeGroup.add(points);
+
+  const glowGeo = new THREE.SphereGeometry(1.85, 24, 18);
+  const glowMat = new THREE.MeshBasicMaterial({color:0x8B5CF6, transparent:true, opacity:0.06});
+  globeGroup.add(new THREE.Mesh(glowGeo, glowMat));
+
+  window.addEventListener('resize', fit);
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.003;
+    globeGroup.rotation.y = t;
+    globeGroup.rotation.x = 0.25;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* ================= SCROLL REVEAL ================= */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
